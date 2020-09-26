@@ -1,0 +1,32 @@
+
+#canvas-classic {
+  background-color: #4e89ae;
+  border-radius: 2px;
+}
+
+#button-container {
+  padding: 20px 0 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+#play-game-classic {
+  background-color:	#48ff48;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 0 20px 3px 20px;
+}
+
+#play-game-classic:hover {
+  opacity: .8;
+}
+
+#score-board-float-container {}
+
+.score-float-child {
+  width: 50%;
+  float: left;
+}
