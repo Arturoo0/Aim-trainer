@@ -8,10 +8,16 @@ class ScoreReport extends React.Component {
     this.props = props;
   }
 
+  computeAccuracy(){
+    const ref = this.props.report;
+    if (ref.clicks == 0) return 0;
+    return Math.floor((ref.score/ref.clicks) * 100);
+  }
+
   render(){
     return(
-      <div>
-        testing trigger
+      <div id='ScoreReport-root'>
+        <div id='report-summary'>You hit {this.props.report.score} targets with an accuracy of {this.computeAccuracy()}%</div>
       </div>
     );
   }

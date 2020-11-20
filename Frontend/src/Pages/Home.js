@@ -17,7 +17,6 @@ class Home extends React.Component {
             <ClassicCard />
           </div>
         </div>
-        <ScoreReport />
       </div>
     );
   }

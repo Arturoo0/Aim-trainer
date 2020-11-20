@@ -4,7 +4,6 @@ const querystring = require('querystring');
 
 //only used to fill the player model
 export async function post(data){
-  console.log(data);
   const queryString = querystring.stringify({
     player_score : data.player_score,
     targets_appeared : data.targets_appeared,

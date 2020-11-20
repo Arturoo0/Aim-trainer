@@ -1,7 +1,7 @@
 import React from 'react';
 import './CSS/ClassicGame.css';
 import { baseRequest } from '.././Utils';
-import { ScoreReport } from './ScoreReport';
+import ScoreReport from './ScoreReport';
 
 function Target(xCoord, yCoord, Size){
   return {
@@ -9,8 +9,7 @@ function Target(xCoord, yCoord, Size){
     y : yCoord,
     size : Size,
     maxSize : 30,
-    // growthFactor : .09
-    growthFactor : 2
+    growthFactor : .20
   };
 }
 
@@ -22,6 +21,7 @@ class ClassicGame extends React.Component {
   constructor(){
     super();
     this.state = {
+      firstGame : true,
       score : 0,
       buttonState : 'Play',
       lives : 3,
@@ -30,6 +30,7 @@ class ClassicGame extends React.Component {
     };
 
     this.targets = [];
+    this.cachedReport = {};
     this.canvasRef = React.createRef();
     this.buttonRef = React.createRef();
 
@@ -57,6 +58,7 @@ class ClassicGame extends React.Component {
       frameSumInterval : 600
     }
     this.setState({
+      firstGame : false,
       score : 0,
       buttonState : 'Play',
       lives : 3,
@@ -165,8 +167,17 @@ class ClassicGame extends React.Component {
         targets_appeared : this.state.targets_appeared,
         total_clicks : this.state.total_clicks
       });
+      this.cachedReport = this.generateReport();
       this.resetGame();
     }
+  }
+
+  generateReport(){
+    const report = {
+      score : this.state.score,
+      clicks : this.state.total_clicks
+    };
+    return report;
   }
 
   componentWillUnmount(){
@@ -175,25 +186,28 @@ class ClassicGame extends React.Component {
 
   render() {
     return (
-      <div id="canvas-container">
+      <div id='canvas-container'>
         <div id='score-board-float-container'>
           <div className='score-float-child' style={{textAlign : 'left'}}>
-            <h1 id="score-counter" style={{color : 'white'}}>Score: {this.state.score}</h1>
+            <h1 id='score-counter' style={{color : 'white'}}>Score: {this.state.score}</h1>
           </div>
           <div className='score-float-child' style={{textAlign : 'right'}}>
             {this.renderLives()}
           </div>
         </div>
         <canvas
-          id="canvas-classic"
+          id='canvas-classic'
           ref={this.canvasRef}
           onMouseDown={this.mouseDown}
           height={500}
           width={800}
         ></canvas>
-        <div id="button-container">
+        <div id='button-container'>
           {this.state.buttonState == 'Play' ? this.renderPlayButton() : null}
           {this.state.buttonState == 'Retry' ? this.renderRetryButton() : null}
+        </div>
+        <div id='summary-container'>
+          {!this.state.firstGame && this.state.buttonState === 'Play' ? <ScoreReport report={this.cachedReport}/> : null}
         </div>
       </div>
     );
