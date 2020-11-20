@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 
 import { Home, Classic } from './Pages';
-import { Navbar, ClassicGame } from './Components';
+import { Navbar, ClassicGame, Footer } from './Components';
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      <Footer />
     </div>
   );
 }
