@@ -1,6 +1,6 @@
 
 #footer-root {
-    color: white;
+    color: #e94560;
     background-color:#0f3460;
     position: fixed;
     left: 0;
@@ -26,6 +26,10 @@
 #footer-social-links li {
     font-size: 1.3rem;
     margin: 0 7px;
+}
+
+#footer-social-links a {
+    color: #e94560;
 }
 
 #footer-social-links li:hover {

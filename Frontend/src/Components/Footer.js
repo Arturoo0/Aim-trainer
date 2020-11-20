@@ -11,8 +11,12 @@ class Footer extends React.Component {
                 </div>
                 <div id='footer-links-container'>
                     <ul id='footer-social-links'>
-                        <li><i class="fab fa-github-square"></i></li>
-                        <li><i class="fab fa-linkedin"></i></li>
+                        <li>
+                            <a href='https://www.linkedin.com/in/arturo-p-914059157/'><i class="fab fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a href='https://github.com/Arturoo0'><i class="fab fa-github-square"></i></a>
+                        </li>
                     </ul>
                 </div>
             </div>
