@@ -3,14 +3,15 @@ import React from 'react';
 import './CSS/ScoreReport.css';
 
 class ScoreReport extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
+    this.props = props;
   }
 
   render(){
     return(
       <div>
-        
+        testing trigger
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import './CSS/ClassicGame.css';
 import { baseRequest } from '.././Utils';
+import { ScoreReport } from './ScoreReport';
 
 function Target(xCoord, yCoord, Size){
   return {
@@ -8,7 +9,8 @@ function Target(xCoord, yCoord, Size){
     y : yCoord,
     size : Size,
     maxSize : 30,
-    growthFactor : .09
+    // growthFactor : .09
+    growthFactor : 2
   };
 }
 
@@ -22,7 +24,9 @@ class ClassicGame extends React.Component {
     this.state = {
       score : 0,
       buttonState : 'Play',
-      lives : 3
+      lives : 3,
+      targets_appeared : 0,
+      total_clicks : 0
     };
 
     this.targets = [];
@@ -56,7 +60,8 @@ class ClassicGame extends React.Component {
       score : 0,
       buttonState : 'Play',
       lives : 3,
-      targets_appeared : 0
+      targets_appeared : 0, 
+      total_clicks : 0
     });
     clearInterval(this.timerID);
   }
@@ -100,6 +105,7 @@ class ClassicGame extends React.Component {
 
   mouseDown(event){
     const { targets, canvasRef : { current : canvas }} = this;
+    this.setState({ total_clicks : this.state.total_clicks + 1});
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
@@ -157,6 +163,7 @@ class ClassicGame extends React.Component {
       baseRequest.post({
         player_score : this.state.score,
         targets_appeared : this.state.targets_appeared,
+        total_clicks : this.state.total_clicks
       });
       this.resetGame();
     }
