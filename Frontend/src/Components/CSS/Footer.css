@@ -6,11 +6,13 @@
     left: 0;
     right: 0;
     bottom: 0;
+    padding: 8px 0;
 }
 
 #footer-name-date {
     text-align: center;
     padding-top: 17px;
+    font-weight: bold;
 }
 
 #footer-social-links {
@@ -19,4 +21,13 @@
     justify-content: center;
     display: flex;
     list-style: none;
+}
+
+#footer-social-links li {
+    font-size: 1.3rem;
+    margin: 0 7px;
+}
+
+#footer-social-links li:hover {
+    opacity: .7;
 }
