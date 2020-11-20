@@ -14,7 +14,7 @@ const db_connection = mongoose.connection;
 
 db_connection.on('error', console.error.bind(console, 'connection error to atlas'));
 db_connection.once('open', () => {
-  console.log('Connected to atlas');
+  console.log('- Connected to atlas');
 });
 
 app.post('/post-score', (req, res) => {
